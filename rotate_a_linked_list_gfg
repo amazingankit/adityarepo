@@ -1,0 +1,44 @@
+
+/*Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function is mentioned above.*/
+
+/*
+  Rotate a linked list after node k
+  The input list will have at least one element  
+  Return pointer to head of rotated linked list 
+  Node is defined as 
+  struct node
+  {
+     int data;
+     struct node *next;
+  }
+*/
+void rotate(struct node **head_ref, int k)
+{ 
+   node * head=*head_ref;
+   node * temp=head;
+   node * Head;
+   int i;
+   for(i=0;i<k-1;i++){
+       if(temp->next!=NULL)
+       temp=temp->next;
+       else
+       temp=head;
+   }
+   node * next=temp->next;
+   if(next==NULL){
+       next=head;
+   }
+   temp->next=NULL;
+   temp=next;
+   Head=temp;
+   if(temp!=head){
+   while(temp->next!=NULL){
+       temp=temp->next;
+   }
+   temp->next=head;
+   }
+   *(head_ref)= Head;
+  // Complete this method
+}
